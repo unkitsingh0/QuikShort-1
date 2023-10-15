@@ -6,6 +6,7 @@ import authRoute from "../routes/authRoute.js";
 import linkShortnerRoute from "../routes/linkShortnerRoute.js";
 import linkRedirectRout from "../routes/linkRedirectRoute.js";
 import qrcodeRoute from "../routes/qrcodeRoute.js";
+import pingRoute from "../routes/pingRoute.js";
 const app = express();
 
 // middlewares
@@ -30,7 +31,8 @@ app.use("/api/link", linkShortnerRoute);
 app.use("/", linkRedirectRout);
 // rout for qrcode
 app.use("/api/qr", qrcodeRoute);
-
+// route for pinging to the server
+app.use("/api/ping", pingRoute);
 // ---------------------------------------
 // server listing to given port no
 app.listen(PORT, () => {
