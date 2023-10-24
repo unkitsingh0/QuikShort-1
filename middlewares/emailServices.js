@@ -6,7 +6,7 @@ let handelEmailService = (userEmail, subject, text) => {
     service: "gmail",
     auth: {
       user: "speedylink.mail@gmail.com",
-      pass: "lfnxwjvkffsyuhxq",
+      pass: process.env.EMAIL_TOKEN,
     },
   });
 
@@ -21,7 +21,8 @@ let handelEmailService = (userEmail, subject, text) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("mail hase been sent");
+      // // This is only for dev
+      // console.log("mail hase been sent");
     }
   });
 };

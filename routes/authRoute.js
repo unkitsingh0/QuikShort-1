@@ -1,20 +1,17 @@
 import express from "express";
 const router = express.Router();
 
-//Tem import
-import User from "../models/User.js";
-
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import handelEmailService from "../middlewares/emailServices.js";
-
 import {
+  handelChangePassword,
   handelCheckUsername,
   handelCompleteProfile,
   handelCreateAccount,
+  handelDeleteUserAccount,
+  handelDeleteUserAccountWithOTP,
   handelForgotPassword,
   handelForgotPasswordChangePassword,
   handelForgotPasswordOTP,
+  handelGetProfileData,
   handelLogin,
   handelSendNewOTP,
   handelVerifyOtp,
@@ -37,4 +34,10 @@ router
 router
   .route("/forgot_change_password")
   .patch(handelForgotPasswordChangePassword);
+// profile
+router.route("/profile").post(handelGetProfileData).patch(handelChangePassword);
+router
+  .route("/delete")
+  .post(handelDeleteUserAccount)
+  .delete(handelDeleteUserAccountWithOTP);
 export default router;
